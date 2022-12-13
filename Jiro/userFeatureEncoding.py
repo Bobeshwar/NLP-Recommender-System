@@ -71,6 +71,7 @@ def orderedEncoder(wArray, vocab, index):
     return vocab, index
 
 
+
 # pre-processes all reviews into review-based user feature vectors
 def processReviews(fLoc, eLim, n, wLim, save, saveLoc):
 
@@ -85,6 +86,7 @@ def processReviews(fLoc, eLim, n, wLim, save, saveLoc):
         data = json.loads(line)
         # extract what we want
         id = data['user_id']
+        business = data['business_id']
         stars = data['stars']
         text = data['text']
         useful = data['useful']
@@ -95,7 +97,7 @@ def processReviews(fLoc, eLim, n, wLim, save, saveLoc):
         allData.append([id, stars, useful, funny, cool, text])
     # create the DataFrame
     rFile.close()
-    df = pd.DataFrame(allData, columns=['user_id','stars', 'useful', 'funny', 'cool', 'text'])
+    df = pd.DataFrame(allData, columns=['user_id','business_id','stars', 'useful', 'text'])
     
     # create the feature vocabulary and indicies
     vocab = []
@@ -108,7 +110,7 @@ def processReviews(fLoc, eLim, n, wLim, save, saveLoc):
         wordList = removeStopwords(wordList)
         wordList = lemmatizer(wordList)
         wordList = wordList[:wLim]
-        df.at[count, 'text'] = wordList
+        # df.at[count, 'text'] = wordList
         vocab, index = orderedEncoder(wordList, vocab, index)
         count += 1
         if count % 1000 == 0:
@@ -186,7 +188,7 @@ def parseArgs():
                         help="max number of reviews considered for forming vectors")
     parser.add_option("-w", "--words", dest="wordLimit",
                         action = "store", type = "int",
-                        default = 150,
+                        default = 97,
                         help="max number of word counts in each review considered for forming vectors")
     parser.add_option("-e", "--encoding", dest="encodingLimit",
                         action = "store", type = "int",
