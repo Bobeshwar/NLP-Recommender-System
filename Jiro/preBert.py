@@ -75,7 +75,7 @@ def parseArgs():
                         help="write review data file location")
     parser.add_option("-n", "--number", dest="numberEntries",
                         action = "store", type = "int",
-                        default = 100000, # default is 10000
+                        default = 50000, # default is 10000
                         help="max number of reviews considered for forming vectors")
     parser.add_option("-w", "--words", dest="wordLimit",
                         action = "store", type = "int",
