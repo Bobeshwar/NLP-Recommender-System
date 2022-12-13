@@ -10,6 +10,10 @@ from transformers import AutoTokenizer
 def preprocessBert(fLoc, eLim, n, wLim, save, saveLoc, oneReview=True):
 
     # process json into raw pandas data
+
+    test = np.load('features.npy')
+    print(test)
+    return
     rFile = open(fLoc, "r", encoding='utf-8') 
     allData = list()
     stop = int(n)
