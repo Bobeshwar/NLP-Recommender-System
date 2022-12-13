@@ -4,15 +4,6 @@ import matplotlib.pyplot as plt
 import re
 
 hello = re.findall(r"[\w']+|[.!?]", "Yo... What's up my dudes: Hello, I'm a string!!")
-print(hello)
-fuckeroo = []
-
-def fuck(boo):
-    boo.append("yeppeee")
-    return
-
-fuck(fuckeroo)
-print(fuckeroo)
 
 # # open input file: 
 # reviewF = '../yelp_dataset/yelp_academic_dataset_review.json'
