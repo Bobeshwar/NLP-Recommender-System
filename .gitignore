@@ -1,0 +1,3 @@
+yelp_dataset/**
+features.npy
+__pycache__/**
